@@ -26,3 +26,10 @@ The database's name is "hunitytester" and it has 5 tables.
 |command|VARCHAR(255)|The command, 16caharcters, 8bytes|
 |sent_to_master|DATETIME|The time when the record were inserted into the table|
 |sent_to_experiment|DATETIME|The time when sent were updated|
+
+#### raspberry_alive ####
+It has only one record.
+|Column|Type|Description|
+|------|----|-----------|
+|id|INT|autoincrementing primarykey|
+|unixtiemstamp|TIMESTAMP|It is updated every time at the and of the infinite while loop|
