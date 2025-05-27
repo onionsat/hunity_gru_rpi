@@ -44,7 +44,7 @@ It has 6 records(for each experiment).
 |timestamp|TIMESTAMP|The time when it was updated|
 
 #### experiments ####
-It has 6 records(for each experiment).
+It has 6 records(for each experiment). Not used in this code.
 |Column|Type|Description|
 |------|----|-----------|
 |id|INT|autoincrementing primarykey(experimentid)|
