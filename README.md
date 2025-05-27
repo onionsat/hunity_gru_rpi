@@ -13,7 +13,7 @@ The database's name is "hunitytester" and it has 5 tables.
 |------|----|-----------|
 |id|INT|autoincrementing primarykey|
 |experimentid|INT|A number from 1 to 6, which identifies an experiment|
-|expdata|VACRHAR(255)|The data read from the experiment|
+|expdata|VACRHAR(255)|The data read from the experiment, 32character, 16bytes|
 |success|TINYINT|1 if read were successful, 0 if read were unsuccessful|
 |timestamp|TIMESTAMP|The time of the operation|
 
@@ -23,3 +23,4 @@ The database's name is "hunitytester" and it has 5 tables.
 |id|INT|autoincrementing primarykey|
 |experimentid|INT|A number from 1 to 6, which identifies an experiment|
 |sent|INT|0 if it is to be sent,2 if raspberry saved it and rpi will try to send it, 1 if sending was successful, -1 id sending wadós unsuccessful|
+|command|VARCHAR(255)|The command, 16caharcters, 8bytes|
