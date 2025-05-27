@@ -42,3 +42,13 @@ It has 6 records(for each experiment).
 |experimentid|INT|A number from 1 to 6, which identifies an experiment|
 |switch|TINYINT|if 0 experiment is off, if 1 experiment is on|
 |timestamp|TIMESTAMP|The time when it was updated|
+
+#### experiments ####
+It has 6 records(for each experiment).
+|Column|Type|Description|
+|------|----|-----------|
+|id|INT|autoincrementing primarykey(experimentid)|
+|name|VARCHAR(255)|Name of the experiment|
+|description|TEXT|Description of the experiment|
+|api_keys|LONGTEXT|Api keys for the experiment|
+|allowed_ips|LONGTEXT|White list of the IPs for the experiment|
