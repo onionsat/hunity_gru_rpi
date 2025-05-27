@@ -9,3 +9,6 @@ This code emulates the OBC's interfacing with the student experiments on the Hun
 The database's name is "hunitytester" and it has 5 tables.
 
 #### experimentdata ####
+|Column|Type|Description|
+|------|----|-----------|
+|id|INT|autoincrementing primarykey|
