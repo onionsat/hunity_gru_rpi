@@ -33,3 +33,11 @@ It has only one record.
 |------|----|-----------|
 |id|INT|autoincrementing primarykey|
 |unixtiemstamp|TIMESTAMP|It is updated every time at the and of the infinite while loop|
+
+#### switch_exp ####
+It has 6 records(for each experiment).
+|Column|Type|Description|
+|------|----|-----------|
+|id|INT|autoincrementing primarykey|
+|experimentid|INT|A number from 1 to 6, which identifies an experiment|
+|switch|TINYINT|if 0 experiment is off, if 1 experiment is on|
