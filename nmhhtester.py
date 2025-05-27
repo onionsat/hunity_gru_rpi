@@ -2,6 +2,7 @@ from smbus2 import SMBus, i2c_msg
 import mysql.connector
 import time
 import json
+import RPi.GPIO as GPIO
 
 # function to load credentials from json file
 def loadCredentials(filename):
@@ -56,6 +57,32 @@ def initI2C(bus_number):
 
     return bus
 
+def initEn(pins):
+    success = False
+
+    while success == False:
+        try:
+            GPIO.setmode(GPIO.BCM) # uses gpio numbering
+            success = True
+        except:
+            print("Error settting up GPIOs! Retry in 1 second!")
+            time.sleep(1)
+    
+        try:
+            GPIO.cleanup() # cleaning up gpios
+    
+            # Setting all gpios to output in the pins list
+            for i in pins:
+                GPIO.setup(i, GPIO.OUT)
+                GPIO.set(GPIO.LOW)
+            
+            success = True
+        except:
+            print("Error settting up GPIOs! Retry in 1 second!")
+            time.sleep(1)
+
+# makeing a list of gpio pins
+gpio_pins = []
 # getting credentials from json file
 credentials = loadCredentials("credentials_dev.json")
 # initializing database connection
