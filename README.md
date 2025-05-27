@@ -2,4 +2,4 @@
 
 ### Description ###
 
-This code reads out datas from the student experiments on the Hunity 3PQ satellite using the statemachine of this process on satellite's obc's.
+This code emulates the OBC's interfacing with the student experiments on the Hunity 3PQ satellite.
