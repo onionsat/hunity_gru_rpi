@@ -41,3 +41,4 @@ It has 6 records(for each experiment).
 |id|INT|autoincrementing primarykey|
 |experimentid|INT|A number from 1 to 6, which identifies an experiment|
 |switch|TINYINT|if 0 experiment is off, if 1 experiment is on|
+|timestamp|TIMESTAMP|The time when it was updated|
