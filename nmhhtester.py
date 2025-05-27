@@ -81,8 +81,9 @@ def initEn(pins):
             print("Error settting up GPIOs! Retry in 1 second!")
             time.sleep(1)
 
-# makeing a list of gpio pins
-gpio_pins = []
+# intializing GPIOs
+gpio_pins = [13,6,5,11,9,10]
+initEn(gpio_pins)
 # getting credentials from json file
 credentials = loadCredentials("credentials_dev.json")
 # initializing database connection
