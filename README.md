@@ -24,3 +24,5 @@ The database's name is "hunitytester" and it has 5 tables.
 |experimentid|INT|A number from 1 to 6, which identifies an experiment|
 |sent|INT|0 if it is to be sent,2 if raspberry saved it and rpi will try to send it, 1 if sending was successful, -1 id sending wadós unsuccessful|
 |command|VARCHAR(255)|The command, 16caharcters, 8bytes|
+|sent_to_master|DATETIME|The time when the record were inserted into the table|
+|sent_to_experiment|DATETIME|The time when sent were updated|
