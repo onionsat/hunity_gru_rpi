@@ -63,12 +63,6 @@ def initEn(pins):
     while success == False:
         try:
             GPIO.setmode(GPIO.BCM) # uses gpio numbering
-            success = True
-        except:
-            print("Error settting up GPIOs! Retry in 1 second!")
-            time.sleep(1)
-    
-        try:
             GPIO.cleanup() # cleaning up gpios
     
             # Setting all gpios to output in the pins list
@@ -91,6 +85,7 @@ conn, cursor = initDB(credentials["db"]["host"], credentials["db"]["user"], cred
 # initializing I2C bus 1
 bus = initI2C(1)
 
+print("Everything initialized successfully!")
 
 address = 0x50 # start address
 
