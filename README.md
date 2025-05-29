@@ -2,7 +2,7 @@
 
 ## Description ##
 
-This code emulates the [OBC's interfacing with the student experiments](https://github.com/user-attachments/assets/b3c06d97-d05c-451f-9955-80785f9aa16f) on the Hunity 3PQ satellite. The datas read from the experiments(32character, 16byte) are uploaded into a database. The write commands are sent to the experiments from the same database.
+This code emulates the [OBC's interfacing with the student experiments](https://github.com/user-attachments/assets/b3c06d97-d05c-451f-9955-80785f9aa16f) on the Hunity 3PQ satellite. The datas read from the experiments(32character, 16byte) are uploaded into a database. The write commands are sent to the experiments from the same database. The script runs in a virtual environment.
 
 ### Database ###
 
