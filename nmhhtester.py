@@ -58,13 +58,12 @@ def initI2C(bus_number):
     return bus
 
 def initEn(pins):
-    success = False
+    GPIO.setmode(GPIO.BCM) # uses gpio numbering
 
-    while success == False:
-        try:
-            GPIO.setmode(GPIO.BCM) # uses gpio numbering
-            GPIO.cleanup() # cleaning up gpios
+    success = True
     
+    while success == False:
+        try: 
             # Setting all gpios to output in the pins list
             for i in pins:
                 GPIO.setup(i, GPIO.OUT)
