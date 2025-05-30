@@ -34,6 +34,15 @@ It has only one record.
 |id|INT|autoincrementing primarykey|
 |unixtiemstamp|TIMESTAMP|It is updated every time at the and of the infinite while loop|
 
+#### bmedata ####
+|Column|Type|Description|
+|------|----|-----------|
+|id|INT|autoincrementing primarykey|
+|temperature|INT|Temperature|
+|pressure|INT|Pressure|
+|humidity|INT|Humidity|
+|timestamp|TIMESTAMP|Timestamp when data was inserted|
+
 #### switch_exp ####
 It has 6 records(for each experiment).
 |Column|Type|Description|
