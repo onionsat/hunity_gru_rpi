@@ -86,6 +86,7 @@ def initBME280():
             print("Error initializing BME280 sensor! Retry in 1 second!")
             time.sleep(1)
 
+
 # intializing GPIOs
 gpio_pins = [13,6,5,11,9,10]
 initEn(gpio_pins)
@@ -97,10 +98,10 @@ conn, cursor = initDB(credentials["db"]["host"], credentials["db"]["user"], cred
 bus = initI2C(1)
 # initializing BME280 sensor
 bme280_calibration_params = initBME280()
-
+# start address
+address = 0x50
+# everything set up successfully
 print("Everything initialized successfully!")
-
-address = 0x50 # start address
 
 while True:
     # read operation
