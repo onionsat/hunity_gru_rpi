@@ -247,7 +247,15 @@ while True:
         print("Error reading BME280 sensor data")
     
     if success:
-        
+        print(f"temperature: {bme280_data.temperature} pressure: {bme280_data.pressure} humidity: {bme280_data.humidity}")
+
+        try:
+            insertBME280 = "INSERT INTO bmedata (temperature, pressure, humidity, timestamp) VALUES (%s, %s, %s, current_timestamp())"
+
+            cursor.execute(insertBME280, (bme280_data.temperature, bme280_data.pressure, bme280_data.humidity))
+            conn.commit()
+        except:
+            print("Error puting BME280 sensor data into database")
 
     # putting timestamp in raspberry_alive table
     aliveSQL = "UPDATE raspberry_alive SET unixtimestamp = current_timestamp() WHERE id = 1"
