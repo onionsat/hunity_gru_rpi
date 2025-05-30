@@ -3,6 +3,7 @@ import mysql.connector
 import time
 import json
 import RPi.GPIO as GPIO
+import bme280
 
 # function to load credentials from json file
 def loadCredentials(filename):
@@ -74,6 +75,17 @@ def initEn(pins):
             print("Error settting up GPIOs! Retry in 1 second!")
             time.sleep(1)
 
+def initBME280():
+    while True:
+        try:
+            # Initialize BME280 sensor
+            bme_load = bme280.load_calibration_params(SMBus(1), 0x76)
+
+            return bme_load
+        except:
+            print("Error initializing BME280 sensor! Retry in 1 second!")
+            time.sleep(1)
+
 # intializing GPIOs
 gpio_pins = [13,6,5,11,9,10]
 initEn(gpio_pins)
@@ -83,6 +95,8 @@ credentials = loadCredentials("credentials_dev.json")
 conn, cursor = initDB(credentials["db"]["host"], credentials["db"]["user"], credentials["db"]["password"], credentials["db"]["database"])
 # initializing I2C bus 1
 bus = initI2C(1)
+# initializing BME280 sensor
+bme280_calibration_params = initBME280()
 
 print("Everything initialized successfully!")
 
@@ -223,6 +237,18 @@ while True:
         time.sleep(1)
         address = address + 1
     
+    # reading BME280 sensor data
+    success = True
+    
+    try:
+        bme280_data = bme280.sample(SMBus(1), 0x76, bme280_calibration_params)
+    except:
+        success = False
+        print("Error reading BME280 sensor data")
+    
+    if success:
+        
+
     # putting timestamp in raspberry_alive table
     aliveSQL = "UPDATE raspberry_alive SET unixtimestamp = current_timestamp() WHERE id = 1"
     aliveUpdateBool = True
