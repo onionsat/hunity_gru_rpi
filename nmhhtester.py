@@ -262,15 +262,15 @@ while True:
         address = address + 1
     
     # reading BME280 sensor data
-    success = True
+    successBME280 = True
     
     try:
         bme280_data = bme280.sample(SMBus(1), 0x76, bme280_calibration_params)
     except:
-        success = False
+        successBME280 = False
         print("Error reading BME280 sensor data")
     
-    if success:
+    if successBME280:
         print(f"temperature: {bme280_data.temperature} pressure: {bme280_data.pressure} humidity: {bme280_data.humidity}")
 
         try:
