@@ -61,11 +61,10 @@ def initEn(pins):
     success = True
     
     while success == False:
-        try: 
+        try:
             # Setting all gpios to output in the pins list, intial value is LOW
             for i in pins:
-                GPIO.setup(i, GPIO.OUT)
-                GPIO.set(GPIO.LOW)
+                GPIO.setup(i, GPIO.OUT, initial=GPIO.LOW)
             
             success = True
         except:
@@ -266,10 +265,3 @@ def raspberryAlive(conn, cursor):
         conn.commit()
     except:
         print("Error updating raspberry_alive table")
-
-# function to reintialize i2c
-def reinitI2C(bus):
-    try:
-        bus.close()
-    except:
-        print("Error reinitializing I2C bus")
