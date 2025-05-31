@@ -100,10 +100,33 @@ bus = initI2C(1)
 bme280_calibration_params = initBME280()
 # start address
 address = 0x50
+# initlial state of gpios
+gpioState = [0, 0, 0, 0, 0, 0]
 # everything set up successfully
 print("Everything initialized successfully!")
 
 while True:
+    # switching mechanism
+    successSwitch = True
+
+    try:
+        onoffquery = "SELECT switch FROM switch_exp WHERE experimnetid = %s"
+        cursor.execute(onoffquery, (address - 0x50 + 1,))
+
+        switch = cursor.fetchall()
+    except:
+        successSwitch = False
+        print(f"Error querying switch for experiment {address - 0x50 + 1}")
+    
+    if successSwitch:
+        try:
+            if switch[0][0] == 1 and gpioState[address - 0x50] == 0:
+                GPIO.output(gpio_pins[address - 0x50], GPIO.HIGH) # turn on the experiment
+            elif switch[0][0] == 0 and gpioState[address - 0x50] == 1:
+                GPIO.output(gpio_pins[address - 0x50], GPIO.LOW)
+        except:
+            print(f"Error switching experiment {address - 0x50 + 1}")
+
     # read operation
     successReading = True
 
