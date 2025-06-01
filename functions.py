@@ -58,7 +58,7 @@ def initI2C(bus_number):
 def initEn(pins):
     GPIO.setmode(GPIO.BCM) # uses gpio numbering
 
-    success = True
+    success = False
     
     while success == False:
         try:
