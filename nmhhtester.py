@@ -33,12 +33,12 @@ while True:
         functions.timesyncCommand(bus)
 
         time.sleep(1)
-        #reinitialize I2C (legalábbis Emil szerint mindenképp én kihagyom, a gecibe)
+        #reinitialize I2C
         time.sleep(1)
 
         experimentId = 1
     
     functions.pushBMEdata(conn, cursor, bme_calibration, bus)
 
-    # keeps treck if the program is alive
+    # keeps track if the program is alive
     functions.raspberryAlive(conn, cursor)
