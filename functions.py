@@ -73,7 +73,7 @@ def initEn(pins):
 
 
 # function to initialize BME280 sensor, it tries 5 times
-def initBME280():
+def initBME280(bus):
     successBme = False
     bme_calibration = None
 
@@ -84,7 +84,7 @@ def initBME280():
 
             successBme = True
 
-            return bme_calibration, success # if successful, return the calibration parameters and success status
+            return bme_calibration, successBme # if successful, return the calibration parameters and success status
         except:
             print("Error initializing BME280 sensor! Retry in 1 second!")
             time.sleep(1)
@@ -106,7 +106,7 @@ def fullInit(filename, pins, bus_number):
     initEn(pins)
 
     # trying to initializing BME280 sensor
-    bme_calibration, successBme = initBME280()
+    bme_calibration, successBme = initBME280(bus)
 
     if successBme:
         print("Initialization fully complete!")
