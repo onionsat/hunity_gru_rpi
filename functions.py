@@ -71,17 +71,25 @@ def initEn(pins):
             print("Error settting up GPIOs! Retry in 1 second!")
             time.sleep(1)
 
-# function to initialize BME280 sensor
+
+# function to initialize BME280 sensor, it tries 5 times
 def initBME280():
-    while True:
+    successBme = False
+    bme_calibration = None
+
+    for i in range(0, 5):
         try:
             # Initialize BME280 sensor
             bme_calibration = bme280.load_calibration_params(SMBus(1), 0x76)
 
-            return bme_calibration
+            successBme = True
+
+            return bme_calibration, success # if successful, return the calibration parameters and success status
         except:
             print("Error initializing BME280 sensor! Retry in 1 second!")
             time.sleep(1)
+    
+    return bme_calibration, successBme # if unsuccessful, return None and success status as False
 
 # function to initialize everything
 def fullInit(filename, pins, bus_number):
@@ -97,12 +105,15 @@ def fullInit(filename, pins, bus_number):
     # initializing Enable GPIOs
     initEn(pins)
 
-    # initializing BME280 sensor
-    bme_calibration = initBME280()
+    # trying to initializing BME280 sensor
+    bme_calibration, successBme = initBME280()
 
-    print("Initialization complete!")
+    if successBme:
+        print("Initialization fully complete!")
+    else:
+        print("Everything initialized except BME280 sensor!")
 
-    return conn, cursor, bus, bme_calibration
+    return conn, cursor, bus, bme_calibration, successBme
 
 # function to switch experimentId on and off
 def switchExperiment(conn, cursor, experimentId, pins):

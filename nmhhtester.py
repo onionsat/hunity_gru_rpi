@@ -12,7 +12,7 @@ filename = "credentials.json"
 bus_number = 1
 
 # full intialization
-conn, cursor, bus, bme_calibration = functions.fullInit(filename, pins, bus_number)
+conn, cursor, bus, bme_calibration, successBme = functions.fullInit(filename, pins, bus_number)
 
 atexit.register(GPIO.cleanup)
 atexit.register(bus.close)
@@ -38,7 +38,8 @@ while True:
 
         experimentId = 1
     
-    functions.pushBMEdata(conn, cursor, bme_calibration, bus)
+    if successBme:
+        functions.pushBMEdata(conn, cursor, bme_calibration, bus)
 
     # keeps track if the program is alive
     functions.raspberryAlive(conn, cursor)
