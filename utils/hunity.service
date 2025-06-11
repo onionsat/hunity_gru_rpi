@@ -1,0 +1,12 @@
+[Unit]
+Description=Hunity GRU
+After=network.target
+
+[Service]
+User=hunity
+WorkingDirectory=/home/hunity/Desktop/hunity_gru_rpi
+ExecStart=/home/hunity/Desktop/hunity_gru_rpi/venv/bin/python /home/hunity/Desktop/hunity_gru_rpi/nmhhtester.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
