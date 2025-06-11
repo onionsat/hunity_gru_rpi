@@ -38,9 +38,9 @@ It has only one record.
 |Column|Type|Description|
 |------|----|-----------|
 |id|INT|autoincrementing primarykey|
-|temperature|INT|Temperature|
-|pressure|INT|Pressure|
-|humidity|INT|Humidity|
+|temperature|FLOAT|Temperature|
+|pressure|FLOAT|Pressure|
+|humidity|FLOAT|Humidity|
 |timestamp|TIMESTAMP|Timestamp when data was inserted|
 
 #### switch_exp ####

@@ -3,7 +3,7 @@ import time
 import mysql.connector
 from smbus2 import SMBus, i2c_msg
 import RPi.GPIO as GPIO
-import bme280
+import RPi.bme280 as bme280
 
 # function to load credentials from json file
 def loadCredentials(filename):
@@ -80,7 +80,7 @@ def initBME280(bus):
     for i in range(0, 5):
         try:
             # Initialize BME280 sensor
-            bme_calibration = bme280.load_calibration_params(SMBus(1), 0x76)
+            bme_calibration = bme280.load_calibration_params(bus, 0x76)
 
             successBme = True
 
