@@ -3,7 +3,7 @@ import time
 import mysql.connector
 from smbus2 import SMBus, i2c_msg
 import RPi.GPIO as GPIO
-import RPi.bme280 as bme280
+import bme280 #RPi.bme280 !!
 
 # function to load credentials from json file
 def loadCredentials(filename):
@@ -128,6 +128,7 @@ def switchExperiment(conn, cursor, experimentId, pins):
     
     try:
         if switchState[0][0] == 1:
+
             GPIO.output(pins[experimentId-1], GPIO.HIGH) # turn on the experiment
         elif switchState[0][0] == 0:
             GPIO.output(pins[experimentId-1], GPIO.LOW) # turn off the experiment
