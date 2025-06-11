@@ -6,6 +6,8 @@ After=network.target
 User=hunity
 WorkingDirectory=/home/hunity/Desktop/hunity_gru_rpi
 ExecStart=/home/hunity/Desktop/hunity_gru_rpi/venv/bin/python /home/hunity/Desktop/hunity_gru_rpi/nmhhtester.py
+StandardOutput=/home/hunity/Desktop/logs/hunity.out.log
+StandardError=/home/hunity/Desktop/logs/hunity.out.log
 Restart=always
 
 [Install]
