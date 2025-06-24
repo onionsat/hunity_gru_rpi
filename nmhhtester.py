@@ -41,5 +41,15 @@ while True:
     if successBme:
         functions.pushBMEdata(conn, cursor, bme_calibration, bus)
 
+    # check if database cononection is still alive
+    if not conn.is_connected():
+        print("Not connected to the database. Trying to reconnect to the database.")
+        try:
+            conn.reconnect(attempts=1)
+            cursor = conn.cursor()
+            print("Reconnected to the database.")
+        except:
+            print("Error reconnecting to the database.")
+
     # keeps track if the program is alive
     functions.raspberryAlive(conn, cursor)
